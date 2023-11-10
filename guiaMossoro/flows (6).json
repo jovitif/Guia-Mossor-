@@ -1,0 +1,518 @@
+[
+    {
+        "id": "db410e1f738a4f87",
+        "type": "tab",
+        "label": "Projeto Final",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5b4c8f1f5f66de0b",
+        "type": "comment",
+        "z": "db410e1f738a4f87",
+        "name": "Create ",
+        "info": "Operacao para criar um local\n",
+        "x": 410,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "c55c3bc39eee894c",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "Create",
+        "url": "/createLocal",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "94dfa908addabc26",
+                "d264f2366c8c9e9a"
+            ]
+        ]
+    },
+    {
+        "id": "49418a997d7c20ca",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "94dfa908addabc26",
+        "type": "debug",
+        "z": "db410e1f738a4f87",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 560,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "d264f2366c8c9e9a",
+        "type": "cloudantplus out",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "5714c1f741df8e70",
+        "database": "dbprojetofinal99",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 560,
+        "y": 360,
+        "wires": [
+            [
+                "49418a997d7c20ca"
+            ]
+        ]
+    },
+    {
+        "id": "adfdc4eb2d57769f",
+        "type": "comment",
+        "z": "db410e1f738a4f87",
+        "name": "Get ",
+        "info": "Operacao para obter todas os locais\n",
+        "x": 430,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "c011f9f02b3b8826",
+        "type": "debug",
+        "z": "db410e1f738a4f87",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 480,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "90aabdc3146ed2b5",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "Get",
+        "url": "/getLocais",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 560,
+        "wires": [
+            [
+                "c011f9f02b3b8826",
+                "4e74f315f0a76c27"
+            ]
+        ]
+    },
+    {
+        "id": "ab532950bb72bf92",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "4e74f315f0a76c27",
+        "type": "cloudantplus in",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "b49fbd554ebf1149",
+        "database": "dbprojetofinal99",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 460,
+        "y": 620,
+        "wires": [
+            [
+                "ab532950bb72bf92"
+            ]
+        ]
+    },
+    {
+        "id": "e96fa82594b4b5f5",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "update",
+        "url": "/updateLocal",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 720,
+        "wires": [
+            [
+                "6dbf70dd6a354df2"
+            ]
+        ]
+    },
+    {
+        "id": "1f30920c093934bd",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "delete",
+        "url": "/deleteLocal",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 860,
+        "wires": [
+            [
+                "f64bdef6f496572f"
+            ]
+        ]
+    },
+    {
+        "id": "e7580dba6786b072",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "58c8c5fde3d1e435",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "6dbf70dd6a354df2",
+        "type": "cloudantplus out",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "5714c1f741df8e70",
+        "database": "dbprojetofinal99",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 480,
+        "y": 720,
+        "wires": [
+            [
+                "e7580dba6786b072"
+            ]
+        ]
+    },
+    {
+        "id": "f64bdef6f496572f",
+        "type": "cloudantplus out",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "5714c1f741df8e70",
+        "database": "dbprojetofinal99",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "delete",
+        "x": 480,
+        "y": 860,
+        "wires": [
+            [
+                "58c8c5fde3d1e435"
+            ]
+        ]
+    },
+    {
+        "id": "85c9f56b73f4b378",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "getByCategoria",
+        "url": "getByCategoria",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 1060,
+        "wires": [
+            [
+                "a90a631a795a9f16"
+            ]
+        ]
+    },
+    {
+        "id": "f9248d1f2e62b514",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "getByNome",
+        "url": "getByNome",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 1180,
+        "wires": [
+            [
+                "0a36f43551404eb0"
+            ]
+        ]
+    },
+    {
+        "id": "a90a631a795a9f16",
+        "type": "cloudantplus in",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "5714c1f741df8e70",
+        "database": "dbprojetofinal99",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 480,
+        "y": 1060,
+        "wires": [
+            [
+                "4055ff6301bd9ca3"
+            ]
+        ]
+    },
+    {
+        "id": "0a36f43551404eb0",
+        "type": "cloudantplus in",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "5714c1f741df8e70",
+        "database": "dbprojetofinal99",
+        "service": "_ext_",
+        "search": "_query_",
+        "design": "",
+        "index": "",
+        "x": 480,
+        "y": 1180,
+        "wires": [
+            [
+                "6a530b6faa0c6a30"
+            ]
+        ]
+    },
+    {
+        "id": "4055ff6301bd9ca3",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "6a530b6faa0c6a30",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 850,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "9d5250b81a47aac0",
+        "type": "comment",
+        "z": "db410e1f738a4f87",
+        "name": "obs",
+        "info": "getByCategoria e getByNome vao ser implementados dentro da viewmodel, por meio de um filtro.",
+        "x": 280,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "c7026629e29e764d",
+        "type": "comment",
+        "z": "db410e1f738a4f87",
+        "name": "Criando o Usuario",
+        "info": "",
+        "x": 1470,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "645efd4a975ada15",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "CreateUser",
+        "url": "/createUser",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 1110,
+        "y": 240,
+        "wires": [
+            [
+                "21ebf931042811de",
+                "f4c95b267fa2a152"
+            ]
+        ]
+    },
+    {
+        "id": "b6c84e0d04796513",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1790,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "21ebf931042811de",
+        "type": "debug",
+        "z": "db410e1f738a4f87",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "f4c95b267fa2a152",
+        "type": "cloudantplus out",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "5714c1f741df8e70",
+        "database": "dbprojetofinal99user",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 1520,
+        "y": 380,
+        "wires": [
+            [
+                "b6c84e0d04796513"
+            ]
+        ]
+    },
+    {
+        "id": "c325ad31307b7655",
+        "type": "comment",
+        "z": "db410e1f738a4f87",
+        "name": "Get ",
+        "info": "Operacao para obter todas os locais\n",
+        "x": 1370,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "7384b44cc4292822",
+        "type": "debug",
+        "z": "db410e1f738a4f87",
+        "name": "debug 13",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "ee05f0f78ff403fb",
+        "type": "http in",
+        "z": "db410e1f738a4f87",
+        "name": "GetUser",
+        "url": "/getUsers",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 1100,
+        "y": 600,
+        "wires": [
+            [
+                "7384b44cc4292822",
+                "3ece9146edcf3d56"
+            ]
+        ]
+    },
+    {
+        "id": "46e4c5cd94e68992",
+        "type": "http response",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1790,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "3ece9146edcf3d56",
+        "type": "cloudantplus in",
+        "z": "db410e1f738a4f87",
+        "name": "",
+        "cloudant": "b49fbd554ebf1149",
+        "database": "dbprojetofinal99user",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 1420,
+        "y": 660,
+        "wires": [
+            [
+                "46e4c5cd94e68992"
+            ]
+        ]
+    },
+    {
+        "id": "5714c1f741df8e70",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-1jalvvifxebbrd0wyiftras1w4xeo64yt6ddm9xef5x9:e8bc0e2c82bae656c5c475889e535dcb@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "",
+        "useapikey": true
+    },
+    {
+        "id": "b49fbd554ebf1149",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-1jalvvifxebbrd0wyiftras1w4xeo64yt6ddm9xef5x9:e8bc0e2c82bae656c5c475889e535dcb@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "",
+        "useapikey": true
+    }
+]
